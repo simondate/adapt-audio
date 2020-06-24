@@ -62,20 +62,23 @@ define([
             if (this.$active && this.$active.is($el)) {
                 if (this.$active.hasClass('play')) {
                     this.$active.addClass('pause').removeClass('play');
+                    this.$active.attr("aria-label", "pause audio");
                     this.play();
                 } else {
                     this.$active.addClass('play').removeClass('pause');
+                    this.$active.attr("aria-label", "play audio");
                     this.pause();
                 }
             } else {
                 if (this.$active) {
                     this.$active.addClass('play').removeClass('pause');
+                    this.$active.attr("aria-label", "play audio");
                     this.pause();
                 }
 
                 this.$active = $el;
                 this.$active.addClass('pause').removeClass('play');
-
+                this.$active.attr("aria-label", "pause audio");
                 this.audio.src = this.$active.data('mp3');
 
                 this.play();
@@ -94,12 +97,14 @@ define([
                 // console.log('stop any audio currently playing');
                 if (this.$active) {
                     this.$active.addClass('play').removeClass('pause');
+                    this.$active.attr("aria-label", "play audio");
                     this.stop();
                 }
             } else if (this.$active && (this.$active.is(el) || this.$active.parents(el).length > 0)) {
                 // console.log('stop audio for specific element/descendents if currently playing');
                 if (this.$active) {
                     this.$active.addClass('play').removeClass('pause');
+                    this.$active.attr("aria-label", "pause audio");
                     this.stop();
                 }
             }
